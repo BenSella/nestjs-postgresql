@@ -1,73 +1,95 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Nest-Postgresql Project
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a NestJS application that integrates with PostgreSQL and Elasticsearch. 
+It handles the creation and management of various tables, including appointments, 
+customers, locations, service providers, and users. It also supports 
+Elasticsearch for storing and querying data efficiently.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Project Structure
 
-## Description
+The project architecture:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+Nest-postgresql
+│
+├── sql
+│   ├── create_appointments_table.sql
+│   ├── create_customers_table.sql
+│   ├── create_location_table.sql
+│   ├── create_service_providers_table.sql
+│   └── create_users_table.sql
+│
+├── src
+│   ├── configuration
+│   │   └── configuration.ts
+│   │
+│   ├── controllers
+│   │   ├── appointment.controller.ts
+│   │   ├── customer.controller.ts
+│   │   ├── elasticsearch.controller.ts
+│   │   ├── location.controller.ts
+│   │   ├── service_provider.controller.ts
+│   │   ├── technical.logs.controller.ts
+│   │   └── users.controller.ts
+│   │
+│   ├── dto
+│   │   ├── appointment.dto.ts
+│   │   ├── customer.dto.ts
+│   │   ├── location.dto.ts
+│   │   ├── service_provider.dto.ts
+│   │   └── user.dto.ts
+│   │
+│   ├── elasticsearch
+│   │   └── elasticsearch.service.ts
+│   │
+│   ├── entities
+│   │   ├── appointment.entity.ts
+│   │   ├── base.entity.ts
+│   │   ├── customer.entity.ts
+│   │   ├── error_log.entity.ts
+│   │   ├── location.entity.ts
+│   │   ├── service_provider.entity.ts
+│   │   └── user.entity.ts
+│   │
+│   ├── filters
+│   │   └── all_exceptions_filter.ts
+│   │
+│   ├── modules
+│   │   ├── appointment.module.ts
+│   │   ├── customer.module.ts
+│   │   ├── elasticsearch.module.ts
+│   │   ├── location.module.ts
+│   │   ├── serviceProvider.module.ts
+│   │   ├── time.module.ts
+│   │   └── user.module.ts
+│   │
+│   ├── search
+│   │   └── search.controller.ts
+│   │
+│   ├── services
+│   │   ├── appointment.service.ts
+│   │   ├── base.service.ts
+│   │   ├── customer.service.ts
+│   │   ├── location.service.ts
+│   │   ├── service_provider.service.ts
+│   │   ├── time.service.ts
+│   │   └── users.service.ts
+│   │
+│   ├── app.module.ts
+│   └── main.ts
+│
+└── .env
+Create a .env file in the root directory and provide the necessary configurations:
 
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+DB_TYPE=postgres
+DB_HOST=<YOUR_DB_HOST>
+DB_PORT=<YOUR_DB_PORT>
+DB_USERNAME=<YOUR_DB_USERNAME>
+DB_PASSWORD=<YOUR_DB_PASSWORD>
+DB_DATABASE=<YOUR_DB_NAME>
+ELASTIC_NODE=<YOUR_ELASTIC_NODE>
+ELASTIC_USER=<YOUR_ELASTIC_USER>
+ELASTIC_PASSWORD=<YOUR_ELASTIC_PASSWORD>
+ELASTIC_INDEX=<YOUR_ELASTIC_INDEX>
+ELASTIC_EXCEPTION_INDEX=business_logs
+TIMEZONE=Asia/Jerusalem

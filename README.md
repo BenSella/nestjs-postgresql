@@ -1,5 +1,5 @@
 # Nest-Postgresql Project
-(if you are using github in order to open the file, please click on preview" that data might not look clear without it)
+
 This project is a NestJS application that integrates with PostgreSQL and Elasticsearch. 
 It handles the creation and management of various tables, including appointments, 
 customers, locations, service providers, and users. It also supports 

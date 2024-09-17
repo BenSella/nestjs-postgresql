@@ -5,6 +5,7 @@ It handles the creation and management of various tables, including appointments
 customers, locations, service providers, and users. It also supports 
 Elasticsearch for storing and querying data efficiently.
 
+```bash
 ## Project Structure
 
 The project architecture:
@@ -79,6 +80,8 @@ Nest-postgresql
 │   └── main.ts
 │
 └── .env
+
+bash```
 Create a .env file in the root directory and provide the necessary configurations:
 
 DB_TYPE=postgres
